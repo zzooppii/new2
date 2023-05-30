@@ -26,14 +26,16 @@ describe("Multicall3", function () {
   let l2TokenAddress = "0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2";
   let addressTo = "0xf0B595d10a92A5a9BC3fFeA7e79f5d266b6035Ea"
   let TONAmount = parseUnits("1", 18);
-  let l2Gas = "200000"
+  let l2Gas = "1300000"
   let data = "0x00"
+  let data2 = "0x"
 
   const ensRegistryInterface = new Interface(['function resolver(bytes32) view returns (address)']);
   const wtonInterface = new Interface(['function swapToTON(uint256) returns (bool)']);
   const wtonInterface2 = new Interface(['function balanceOf(address) view returns (uint256)']);
   const wtonInterface3 = new Interface(['function transferFrom(address,address,uint256) returns (bool)']);
   const wtonInterface4 = new Interface(['function transfer(address,uint256) returns (bool)']);
+  const wtonInterface5 = new Interface(['function approve(address,uint256) returns (bool)']);
   const brigeInterface = new Interface(['function depositERC20To(address,address,address,uint256,uint32,bytes)'])
   // console.log(wtonInterface)
   let amount = 10000000
@@ -55,8 +57,11 @@ describe("Multicall3", function () {
   const calldata4 = wtonInterface4.encodeFunctionData('transfer', [address2,amount2]);
   console.log(calldata4)
   console.log("--------------------")
-  const calldata5 = brigeInterface.encodeFunctionData('depositERC20To', [l1TokenAddress,l2TokenAddress,addressTo,TONAmount,l2Gas,data])
+  const calldata5 = brigeInterface.encodeFunctionData('depositERC20To', [l1TokenAddress,l2TokenAddress,addressTo,TONAmount,l2Gas,data2])
   console.log(calldata5)
+  console.log("--------------------")
+  const calldata6approve = wtonInterface5.encodeFunctionData('approve', [address3,amount2]);
+  console.log(calldata6approve)
 
   const calls = [ 
     {
