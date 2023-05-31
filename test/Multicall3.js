@@ -26,7 +26,7 @@ describe("Multicall3", function () {
   let l2TokenAddress = "0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2";
   let addressTo = "0xf0B595d10a92A5a9BC3fFeA7e79f5d266b6035Ea"
   let TONAmount = parseUnits("1", 18);
-  let l2Gas = "1300000"
+  let l2Gas = "500000"
   let data = "0x00"
   let data2 = "0x"
 
